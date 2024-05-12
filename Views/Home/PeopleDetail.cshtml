@@ -1,0 +1,147 @@
+﻿@model PeopleModel 
+
+@{
+    ViewData["Title"] = @ViewBag.Name + " - Details";
+}
+
+<div style="float:left; padding:15px; padding-top:10px; width: 90%">
+    <h2>@ViewBag.Name's - Details</h2>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+    <a class="nav-link active" id="CityTabId" aria-current="page" onclick="ActiveCityTab();" href="#">City</a>
+        <form method="post" id="CityForm">
+        <div class="form-City">
+            <div style="float:left; padding:15px; padding-top:10px">
+                <label for="text">Enter City: </label>
+            </div>
+            <div style="float:left; padding:5px">
+                <input type="text" id="txtCity" name="Text" class="form-control" onchange="SaveCityData()" value="@ViewBag.City"/>
+            </div>
+           
+        </div>
+    </form>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" id="AgeTabId"  aria-current="page" onclick="ActiveAgeTab();" href="#">Age</a>
+    <form method="post" id="AgeForm">
+    <div class="form-Age">
+        <div style="float:left; padding:15px; padding-top:10px">
+            <label for="text">Enter Age: </label>
+        </div>
+        <div style="float:left; padding:5px">
+            <input type="text" id="txtAge" name="txtAgeName" class="form-control" onchange="SaveAgeData()" value="@ViewBag.Age" />
+        </div>
+        
+    </div>
+    
+</form>
+    </li>
+    
+</ul>
+</div>
+<div style="float:right; padding:5px">
+    <button class="btn btn-primary" onclick="UpdateDatabaseOnClosingTab()">Close Tab</button>
+</div>
+
+<script>
+    //T0 make Age tab disable and inactive on page load
+    window.onload = function () {
+       var form = document.getElementById("AgeForm");
+        form.style.display = "none";
+    };
+    
+    //Funtion to make Age tab as Active and City tab InActive
+    function ActiveAgeTab() {
+         var form = document.getElementById("AgeForm");
+        form.style.display = "block";
+
+        var form = document.getElementById("CityForm");
+        form.style.display = "none";
+
+        document.getElementById("AgeTabId").classList.add("active");
+        document.getElementById("CityTabId").classList.remove("active");
+    }
+
+    //Funtion to make City tab as Active and Age tab InActive
+    function ActiveCityTab() {
+         var form = document.getElementById("CityForm");
+        form.style.display = "block";
+
+        var form = document.getElementById("AgeForm");
+        form.style.display = "none";
+
+        document.getElementById("AgeTabId").classList.remove("active");
+        document.getElementById("CityTabId").classList.add("active");
+    }
+
+    //Function calling to save/update  city data 
+    function SaveCityData() {
+        var inputCity =  document.getElementById("txtCity").value;
+        var EnteredName = '@ViewBag.Name';
+        var currentDate = new Date();
+         //Make an AJAX request to save the value to the database
+        $.ajax({
+            url: '/Home/SaveCityData',
+            type: 'POST',
+            data: 
+            { 
+                Name : EnteredName,
+                City : inputCity,
+                Updt_dte: currentDate
+            },
+            success: function(response) {
+                console.log('Data saved successfully:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving data:', error);
+            }
+        });
+    } 
+
+    //Function calling to save/update age data 
+    function SaveAgeData() {
+            var inputAge =  document.getElementById("txtAge").value;
+            var EnteredName = '@ViewBag.Name';
+            var currentDate = new Date();
+             //Make an AJAX request to save the value to the database
+            $.ajax({
+                url: '/Home/SaveAgeData',
+                type: 'POST',
+                data: 
+                { 
+                    Name : EnteredName,
+                    Age : inputAge,
+                    Updt_dte: currentDate
+                },
+                success: function(response) {
+                    console.log('Data saved successfully:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error saving data:', error);
+                }
+            });
+        }
+
+     function UpdateDatabaseOnClosingTab() {
+        var EnteredName = '@ViewBag.Name';
+         //Make an AJAX request to save the value to the database
+        $.ajax({
+            url: '/Home/UpdateDatabaseOnClosingTab',
+            type: 'POST',
+            async: false,
+            data: 
+            { 
+                Name : EnteredName,
+                TabName: "City"
+            },
+            success: function(response) {
+                console.log('Data saved successfully:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving data:', error);
+            }
+        });
+
+        window.close();
+    }
+</script>

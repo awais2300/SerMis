@@ -7,18 +7,12 @@ namespace SerMis.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
 
         public HomeController(ApplicationDbContext context)
         {
             _context = context;
         }
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
 
         public IActionResult Index()
         {
@@ -36,7 +30,7 @@ namespace SerMis.Controllers
             var Name = HttpContext.Session.GetString("Name");
             ViewBag.City = City; 
             ViewBag.Name = Name;
-            ViewBag.Url = "/Home/Age";
+            //ViewBag.Url = "/Home/Age";
             return View();
         }
 
@@ -49,70 +43,72 @@ namespace SerMis.Controllers
             return View();
         }
 
+        public IActionResult PeopleDetail()
+        {
+            var Name = HttpContext.Session.GetString("Name"); //Getting name value from session 
+            var City = HttpContext.Session.GetString("City"); //Getting City value from session 
+            var Age = HttpContext.Session.GetString("Age"); //Getting Age value from session 
+            ViewBag.Name = Name; //Setting Name value to pass to the view
+            ViewBag.City = City; //Setting City value to pass to the view
+            ViewBag.Age = Age; //Setting Age value to pass to the view
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //// Example Controller Action method
-        //[HttpPost]
-        //public IActionResult SubmitForm(PeopleModel model)
-        //{
-        //    // Process the submitted data
-        //    string textValue = model.Name;
-
-        //    // Redirect to another action or return a view
-        //    return RedirectToAction("ActionName", "ControllerName");
-        //}
 
         [HttpPost]
         public IActionResult Index(PeopleModel model)
         {
-            string name = model.Name;
+            string name = model.Name; //Getting Name from form submit textbox field
 
             if(name != null)
             {
                 var valuesFromDatabase = _context.People.FirstOrDefault(x => x.Name == name);
-                if (valuesFromDatabase != null)
+                if (valuesFromDatabase != null) //If Name is available in the database
                 {
-                    HttpContext.Session.SetString("Name", name);
-                    HttpContext.Session.SetString("Age", valuesFromDatabase.Age.ToString());
+                    HttpContext.Session.SetString("Name", name); //Setting the name to a session variable 
+                    HttpContext.Session.SetString("Age", valuesFromDatabase.Age.ToString()); //Setting the Age to a session variable 
                     if (valuesFromDatabase.City == null)
-                        HttpContext.Session.SetString("City", "");
+                        HttpContext.Session.SetString("City", ""); 
                     else
-                        HttpContext.Session.SetString("City", valuesFromDatabase.City.ToString());
+                        HttpContext.Session.SetString("City", valuesFromDatabase.City.ToString()); //Setting the City to a session variable
 
-                    if (valuesFromDatabase.Flag != 2 || valuesFromDatabase.Flag == null)
+                    if (valuesFromDatabase.Flag != 1 || valuesFromDatabase.Flag == null) //If the tab is already open, then do not open the tab again
                     {
-                        valuesFromDatabase.Flag = 2;
+                        valuesFromDatabase.Flag = 1; //Setting the flag to one 
                         _context.SaveChanges();
 
-                        ViewBag.Url = "/Home/City";
+                        ViewBag.Url = "/Home/PeopleDetail"; //Url to open the new tab
                     }
                 }
-                else
+                else //If the Name doesnot exist in the Database
                 {
-                    HttpContext.Session.SetString("Name", name);
-                    HttpContext.Session.SetString("Age", "");
-                    HttpContext.Session.SetString("City", "");
+                    HttpContext.Session.SetString("Name", name); //Setting the Name to a session variable
+                    HttpContext.Session.SetString("Age", ""); //Setting the Age to blank
+                    HttpContext.Session.SetString("City", ""); //Setting the City to blank
 
                     #region Insert Into DB
-                    var entity = new PeopleModel { Name = name, Flag = 2 };
+                    var entity = new PeopleModel { Name = name, Flag = 1 }; //If the name doesnot exisit in the DB, insert it
                     _context.People.Add(entity);
                     _context.SaveChanges();
                     #endregion
 
-                    ViewBag.Url = "/Home/City";
+                    ViewBag.Url = "/Home/PeopleDetail";
                 }
             }
             
            
             return View();
         }
-
+        #region DataBase Reading and Righting Region
         [HttpPost]
-        public IActionResult SaveCityData(string Name, string City, DateTime Updt_dte)
+        //Funtion to update city value in the database
+        public IActionResult SaveCityData(string Name, string City, DateTime Updt_dte) 
         {
             var NameFromDataBase = _context.People.FirstOrDefault(x => x.Name == Name);
             if (NameFromDataBase != null) //Update existing value
@@ -131,6 +127,7 @@ namespace SerMis.Controllers
         }
 
         [HttpPost]
+        //Funtion to update Age value in the database
         public IActionResult SaveAgeData(string Name, string Age, DateTime Updt_dte)
         {
             var NameFromDataBase = _context.People.FirstOrDefault(x => x.Name == Name);
@@ -150,6 +147,7 @@ namespace SerMis.Controllers
         }
 
         [HttpPost]
+        //Funtion to update Flag value in the database
         public IActionResult UpdateDatabaseOnClosingTab(string Name, string TabName)
         {
             var NameFromDataBase = _context.People.FirstOrDefault(x => x.Name == Name);
@@ -161,5 +159,6 @@ namespace SerMis.Controllers
 
             return Ok();
         }
+        #endregion
     }
 }

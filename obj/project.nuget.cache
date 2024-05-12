@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HK9B59F4xB5LNxSgEbxe0n7u8MfIt00wsw0d5lyaeq4MIbDyils4T6ZI392Neo4BIEB69+Y/4Ko64IlSljzwaQ==",
+  "dgSpecHash": "lhox9uMGjBTw3LnLaqQsWi+T1fRGY/rRTrXCAjFAlI8pdFPFKTUzCv5X0n94GXQXtZuIY+1zEX+ln3AW6G7xLQ==",
   "success": true,
-  "projectFilePath": "D:\\Personal\\WebAPITestProject\\SerMis\\SerMis\\SerMis.csproj",
+  "projectFilePath": "D:\\Personal\\WebAPITestProject\\SerMis_1.5\\SerMis\\SerMis.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator.DESKTOP-B5RJAQU\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Administrator.DESKTOP-B5RJAQU\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

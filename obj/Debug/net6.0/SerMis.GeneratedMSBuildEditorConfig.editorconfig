@@ -8,45 +8,49 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SerMis
 build_property.RootNamespace = SerMis
-build_property.ProjectDir = D:\Personal\WebAPITestProject\SerMis\SerMis\
+build_property.ProjectDir = D:\Personal\WebAPITestProject\SerMis_1.5\SerMis\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Personal\WebAPITestProject\SerMis\SerMis
+build_property.MSBuildProjectDirectory = D:\Personal\WebAPITestProject\SerMis_1.5\SerMis
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/Home/Age.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Home/Age.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/Home/City.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Home/City.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaXR5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/Home/Index.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/Home/Privacy.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Home/PeopleDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZW9wbGVEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/Shared/Error.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/_ViewImports.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/_ViewStart.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Personal/WebAPITestProject/SerMis/SerMis/Views/Shared/_Layout.cshtml]
+[D:/Personal/WebAPITestProject/SerMis_1.5/SerMis/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6zf6dyxzr8

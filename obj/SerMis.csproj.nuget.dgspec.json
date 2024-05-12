@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Personal\\WebAPITestProject\\SerMis\\SerMis\\SerMis.csproj": {}
+    "D:\\Personal\\WebAPITestProject\\SerMis_1.5\\SerMis\\SerMis.csproj": {}
   },
   "projects": {
-    "D:\\Personal\\WebAPITestProject\\SerMis\\SerMis\\SerMis.csproj": {
+    "D:\\Personal\\WebAPITestProject\\SerMis_1.5\\SerMis\\SerMis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Personal\\WebAPITestProject\\SerMis\\SerMis\\SerMis.csproj",
+        "projectUniqueName": "D:\\Personal\\WebAPITestProject\\SerMis_1.5\\SerMis\\SerMis.csproj",
         "projectName": "SerMis",
-        "projectPath": "D:\\Personal\\WebAPITestProject\\SerMis\\SerMis\\SerMis.csproj",
+        "projectPath": "D:\\Personal\\WebAPITestProject\\SerMis_1.5\\SerMis\\SerMis.csproj",
         "packagesPath": "C:\\Users\\Administrator.DESKTOP-B5RJAQU\\.nuget\\packages\\",
-        "outputPath": "D:\\Personal\\WebAPITestProject\\SerMis\\SerMis\\obj\\",
+        "outputPath": "D:\\Personal\\WebAPITestProject\\SerMis_1.5\\SerMis\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator.DESKTOP-B5RJAQU\\AppData\\Roaming\\NuGet\\NuGet.Config",
