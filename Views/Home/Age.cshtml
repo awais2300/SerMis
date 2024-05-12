@@ -1,0 +1,90 @@
+﻿@model PeopleModel // If using a model
+
+@{
+    ViewData["Title"] = @ViewBag.Name + " - Age";
+}
+
+<form method="post">
+    <div class="form-group">
+        <div style="float:left; padding:15px; padding-top:10px">
+            <label for="text">Enter Age: </label>
+        </div>
+        <div style="float:left; padding:5px">
+            <input type="text" id="txtAge" name="txtAgeName" class="form-control" onchange="SaveAgeData()" value="@ViewBag.Age" />
+        </div>
+        <div style="float:right; padding:5px">
+            <button class="btn btn-primary" onclick="UpdateDatabaseOnClosingTab()">Close Tab</button>
+        </div>
+    </div>
+    
+</form>
+
+<script>
+    function SaveAgeData() {
+        var inputAge =  document.getElementById("txtAge").value;
+        var EnteredName = '@ViewBag.Name';
+        var currentDate = new Date();
+         //Make an AJAX request to save the value to the database
+        $.ajax({
+            url: '/Home/SaveAgeData',
+            type: 'POST',
+            data: 
+            { 
+                Name : EnteredName,
+                Age : inputAge,
+                Updt_dte: currentDate
+            },
+            success: function(response) {
+                console.log('Data saved successfully:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving data:', error);
+            }
+        });
+    }
+
+     function UpdateDatabaseOnClosingTab() {
+        var EnteredName = '@ViewBag.Name';
+         //Make an AJAX request to save the value to the database
+        $.ajax({
+            url: '/Home/UpdateDatabaseOnClosingTab',
+            type: 'POST',
+            async: false,
+            data: 
+            { 
+                Name : EnteredName,
+                TabName: "Age"
+            },
+            success: function(response) {
+                console.log('Data saved successfully:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving data:', error);
+            }
+        });
+
+        window.close();
+    }
+
+    //window.addEventListener('beforeunload', function(event) {
+    //     var EnteredName = '@ViewBag.Name';
+    //    $.ajax({
+    //        url: '/Home/UpdateDatabaseOnClosingTab',
+    //        type: 'POST',
+    //        async: false, // Synchronous request to ensure completion before the tab closes
+    //        data: 
+    //        { 
+    //            Name : EnteredName
+    //        },
+    //        success: function(response) {
+    //            console.log('Server notified successfully:', response);
+    //        },
+    //        error: function(xhr, status, error) {
+    //            console.error('Error notifying server:', error);
+    //        }
+    //    });
+    //});
+
+</script>
+
+

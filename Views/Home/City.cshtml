@@ -1,0 +1,76 @@
+﻿@model PeopleModel // If using a model
+@{
+    ViewData["Title"] = @ViewBag.Name + " - City";
+}
+
+
+<form method="post">
+    <div class="form-group">
+        <div style="float:left; padding:15px; padding-top:10px">
+            <label for="text">Enter City: </label>
+        </div>
+        <div style="float:left; padding:5px">
+            <input type="text" id="txtCity" name="Text" class="form-control" onchange="SaveCityData()" value="@ViewBag.City"/>
+        </div>
+        <div style="float:right; padding:5px">
+            <button class="btn btn-primary" onclick="UpdateDatabaseOnClosingTab()">Close Tab</button>
+        </div>
+    </div>
+</form>
+
+<script>
+   window.onload = function () {
+        var url = '@ViewBag.Url';
+        if (url) {
+            window.open(url, '_blank');
+        } else {
+            console.error('URL is not specified.');
+        }
+    };
+
+    function SaveCityData() {
+        var inputCity =  document.getElementById("txtCity").value;
+        var EnteredName = '@ViewBag.Name';
+        var currentDate = new Date();
+         //Make an AJAX request to save the value to the database
+        $.ajax({
+            url: '/Home/SaveCityData',
+            type: 'POST',
+            data: 
+            { 
+                Name : EnteredName,
+                City : inputCity,
+                Updt_dte: currentDate
+            },
+            success: function(response) {
+                console.log('Data saved successfully:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving data:', error);
+            }
+        });
+    }
+
+    function UpdateDatabaseOnClosingTab() {
+        var EnteredName = '@ViewBag.Name';
+         //Make an AJAX request to save the value to the database
+        $.ajax({
+            url: '/Home/UpdateDatabaseOnClosingTab',
+            type: 'POST',
+            async: false,
+            data: 
+            { 
+                Name : EnteredName,
+                TabName: "City"
+            },
+            success: function(response) {
+                console.log('Data saved successfully:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error saving data:', error);
+            }
+        });
+
+        window.close();
+    }
+</script>

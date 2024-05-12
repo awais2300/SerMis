@@ -1,0 +1,27 @@
+﻿@model PeopleModel // If using a model
+
+<form method="post" asp-controller="Home" asp-action="Index">
+    <div class="form-group">
+        <div style="float:left; padding:15px; padding-top:10px">
+            <label for="text">Enter Name: </label>
+        </div>
+         <div style="float:left; padding:5px">
+            <input type="text" id="txtName" asp-for="Name" class="form-control"/>
+        </div>
+        <div style="float:left; padding:5px">
+            <button type="submit" class="btn btn-primary"> GO </button>
+        </div>
+    </div>
+</form>
+
+<!-- Example View (.cshtml) -->
+<script>
+    window.onload = function () {
+        var url = '@ViewBag.Url';
+        if (url) {
+            window.open(url, '_blank');
+        } else {
+            console.error('URL is not specified.');
+        }
+    };
+</script>
